@@ -1,0 +1,5 @@
+"#% impex.setDumpingAllowed( true )";
+INSERT_UPDATE ManufacturerInfo;id[Unique=true];name;establishmentYear;product()
+;101;HP;1976;
+;102;LG;1980;
+;1234;VI;2019
