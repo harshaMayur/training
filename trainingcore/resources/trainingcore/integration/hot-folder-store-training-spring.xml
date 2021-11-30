@@ -18,25 +18,25 @@
 
     <context:annotation-config/>
 
-    <bean id="baseDirectoryCustomers" class="java.lang.String">
+    <bean id="baseDirectoryTraining" class="java.lang.String">
         <constructor-arg value="#{baseDirectory}/${tenantId}/training" />
     </bean>
     <!-- 1) Scan for files -->
-    <file:inbound-channel-adapter id="batchFilesCustomers" directory="#{baseDirectoryCustomers}"
+    <file:inbound-channel-adapter id="batchFilesTraining" directory="#{baseDirectoryTraining}"
                                   filename-regex="^(.*)-(\d+)\.csv" comparator="fileOrderComparator">
         <int:poller fixed-rate="1000" />
     </file:inbound-channel-adapter>
 
 
     <!-- 2) move the file to processing and create header -->
-    <file:outbound-gateway request-channel="batchFilesCustomers" reply-channel="batchFilesNendrasysProc"
-                           directory="#{baseDirectoryCustomers}/processing" delete-source-files="true" />
-    <int:service-activator input-channel="batchFilesNendrasysProc" output-channel="batchFilesHeaderInit" ref="customersHeaderSetupTask"
+    <file:outbound-gateway request-channel="batchFilesTraining" reply-channel="batchFilesTrainingProc"
+                           directory="#{baseDirectoryTraining}/processing" delete-source-files="true" />
+    <int:service-activator input-channel="batchFilesTrainingProc" output-channel="batchFilesHeaderInit" ref="customersHeaderSetupTask"
                            method="execute" />
     <bean id="customersHeaderSetupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
         <property name="catalog" value="electronicsProductCatalog" />
         <property name="net" value="false" />
-        <property name="storeBaseDirectory" ref="baseDirectoryCustomers" />
+        <property name="storeBaseDirectory" ref="baseDirectoryTraining" />
     </bean>
 
     <!-- Transformer converters mappings -->
@@ -46,10 +46,11 @@
           p:converter-ref="batchTrainingProductConverter"/>
 
     <!-- specific converters -->
-    <bean id="batchTrainingProductConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+    <bean id="batchTrainingProductConverter" class="de.hybris.training.core.impex.converter.ManufacturerImpexConverter">
         <property name="header">
             <value>#{defaultImpexProductHeader}
-                INSERT_UPDATE ManufacturerInfo;id[unique=true];name;establishmentYear
+                "#% impex.setDumpingAllowed( true )";
+                INSERT_UPDATE ManufacturerInfo;id[unique=true];name;establishmentYear;isOld[default=false]
             </value>
         </property>
         <property name="impexRow">
