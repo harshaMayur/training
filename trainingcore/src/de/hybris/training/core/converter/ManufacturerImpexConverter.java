@@ -1,6 +1,7 @@
 package de.hybris.training.core.converter;
 
 import de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter;
+import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.exceptions.SystemException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Required;
@@ -10,6 +11,8 @@ import java.util.Calendar;
 import java.util.Map;
 
 public class ManufacturerImpexConverter extends DefaultImpexConverter {
+    private ConfigurationService configurationService;
+    private static final String difference = "product.manufacturer.establishmentYear.difference";
     private static final char PLUS_CHAR = '+';
     private String impexRow;
 
@@ -30,7 +33,8 @@ public class ManufacturerImpexConverter extends DefaultImpexConverter {
             String isOld="false";
             int establishmentYear= Integer.parseInt(row.get(mapIdx-1));
             int CurrentYear= Calendar.getInstance().get(Calendar.YEAR);
-            if(CurrentYear-establishmentYear>=10){
+            int yearDifference= configurationService.getConfiguration().getInt(difference);
+            if(CurrentYear-establishmentYear>=yearDifference){
                 isOld="true";
             }
             row.put(3,isOld);
