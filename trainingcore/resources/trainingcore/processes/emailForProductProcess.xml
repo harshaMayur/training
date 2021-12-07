@@ -3,7 +3,7 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <process xmlns="http://www.hybris.de/xsd/processdefinition" start="generateEmailForProduct" name="emailForProduct"
-         onError="error">
+         processClass="de.hybris.training.core.model.process.EmailForProductProcessModel" onError="error">
 
     <action id="generateEmailForProduct" bean="generateEmailForProduct">
         <transition name="OK" to="sendEmail"/>

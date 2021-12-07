@@ -526,11 +526,10 @@ public class ProductPageController extends AbstractPageController
 	}
 
 	@RequestMapping(value = PRODUCT_CODE_PATH_VARIABLE_PATTERN + "/sendEmail")
-	public String sendEmail(@PathVariable("productCode") final String encodedProductCode, Model model,
-							HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws CMSItemNotFoundException, UnsupportedEncodingException {
+	public String sendEmail(@PathVariable("productCode") final String encodedProductCode) throws CMSItemNotFoundException, UnsupportedEncodingException {
 		final String productCode = decodeWithScheme(encodedProductCode, UTF_8);
 		final ProductModel productModel = productService.getProductForCode(productCode);
 		eventService.publishEvent(new SendEmailForProductEvent(productModel));
-		return productDetail(encodedProductCode, model, httpServletRequest, httpServletResponse);
+		return REDIRECT_PRODUCT_URL;
 	}
 }
