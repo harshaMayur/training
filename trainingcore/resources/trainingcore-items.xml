@@ -135,7 +135,7 @@
         </typegroup>
 
         <typegroup name="Processes">
-        <itemtype code="EmailForProductProcess" extends="BusinessProcess"
+        <itemtype code="EmailForProductProcess" extends="StoreFrontProcess"
                   autocreate="true" generate="true"
                   jaloclass="de.hybris.platform.commerceservices.jalo.process.EmailForProductProcess">
             <attributes>
