@@ -133,6 +133,18 @@
                 </attributes>
             </itemtype>
         </typegroup>
-        
+
+        <typegroup name="Processes">
+        <itemtype code="EmailForProductProcess" extends="BusinessProcess"
+                  autocreate="true" generate="true"
+                  jaloclass="de.hybris.platform.commerceservices.jalo.process.EmailForProductProcess">
+            <attributes>
+                <attribute qualifier="currentProduct" type="Product">
+                    <persistence type="property" />
+                    <description>Attribute contains product.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

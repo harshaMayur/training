@@ -210,4 +210,6 @@
 		<property name="add" ref="productToManufacturerPopulator"/>
 	</bean>
 
+	<bean id="emailForProductContext" class="de.hybris.training.facades.process.email.context.EmailForProductContext"
+		  parent="abstractEmailContext" scope="prototype"/>
 </beans>

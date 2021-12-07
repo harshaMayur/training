@@ -353,6 +353,9 @@
 	<bean id="generateNotPickedUpConsignmentCanceledEmail" parent="abstractGenerateEmailAction">
 		<property name="frontendTemplateName" value="NotPickedUpConsignmentCanceledEmailTemplate"/>
 	</bean>
+	<bean id="generateEmailForProduct" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="EmailForProductTemplate"/>
+	</bean>
 
 	<bean id="removeSentEmail"
 	      class="de.hybris.platform.acceleratorservices.process.email.actions.RemoveSentEmailAction"
@@ -441,6 +444,10 @@
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 
+	<bean id="sendEmailForProductEventListener" class="de.hybris.training.core.custom.event.SendEmailForProductEventListener" parent="abstractEventListener">
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
 	<bean id="quoteBuyerProcessDefinitionResource"
 		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
 		<property name="resource" value="classpath:/trainingcore/processes/quote/quote-buyer-process.xml"/>
@@ -470,6 +477,11 @@
 	<bean id="quoteExpiredProcessDefinitionResource"
 		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
 		<property name="resource" value="classpath:/trainingcore/processes/quote/quote-expired-email-process.xml"/>
+	</bean>
+
+	<bean id="sendProductEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/trainingcore/processes/emailForProductProcess.xml"/>
 	</bean>
 
 	<!-- Quotes email notification jobs -->

@@ -30,8 +30,10 @@ import de.hybris.platform.commercefacades.product.data.ReviewData;
 import de.hybris.platform.commerceservices.url.UrlResolver;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.product.ProductService;
+import de.hybris.platform.servicelayer.event.EventService;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.util.Config;
+import de.hybris.training.core.custom.event.SendEmailForProductEvent;
 import de.hybris.training.storefront.controllers.ControllerConstants;
 
 import java.io.UnsupportedEncodingException;
@@ -86,6 +88,10 @@ public class ProductPageController extends AbstractPageController
 	private static final String FUTURE_STOCK_ENABLED = "storefront.products.futurestock.enabled";
 	private static final String STOCK_SERVICE_UNAVAILABLE = "basket.page.viewFuture.unavailable";
 	private static final String NOT_MULTISKU_ITEM_ERROR = "basket.page.viewFuture.not.multisku";
+	private static final String REDIRECT_PRODUCT_URL = REDIRECT_PREFIX + PRODUCT_CODE_PATH_VARIABLE_PATTERN;
+
+	@Resource(name="eventService")
+	private EventService eventService;
 
 	@Resource(name = "productDataUrlResolver")
 	private UrlResolver<ProductData> productDataUrlResolver;
@@ -519,6 +525,12 @@ public class ProductPageController extends AbstractPageController
 		return cmsPageService.getPageForProduct(productModel, getCmsPreviewService().getPagePreviewCriteria());
 	}
 
-
-
+	@RequestMapping(value = PRODUCT_CODE_PATH_VARIABLE_PATTERN + "/sendEmail")
+	public String sendEmail(@PathVariable("productCode") final String encodedProductCode, Model model,
+							HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws CMSItemNotFoundException, UnsupportedEncodingException {
+		final String productCode = decodeWithScheme(encodedProductCode, UTF_8);
+		final ProductModel productModel = productService.getProductForCode(productCode);
+		eventService.publishEvent(new SendEmailForProductEvent(productModel));
+		return productDetail(encodedProductCode, model, httpServletRequest, httpServletResponse);
+	}
 }
