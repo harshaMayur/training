@@ -1,6 +1,5 @@
 package de.hybris.training.core.custom.event;
 
-import de.hybris.platform.commerceservices.jalo.process.EmailForProductProcess;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.event.events.AbstractEvent;
 
