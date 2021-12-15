@@ -1,10 +1,10 @@
 package de.hybris.training.core.custom.event;
+import de.hybris.platform.commerceservices.model.process.EmailForProductProcessModel;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.processengine.BusinessProcessService;
-import de.hybris.platform.processengine.model.BusinessProcessModel;
 import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
 import de.hybris.platform.servicelayer.model.ModelService;
-import de.hybris.training.core.model.process.EmailForProductProcessModel;
+
 
 public class SendEmailForProductEventListener extends AbstractEventListener<SendEmailForProductEvent> {
 

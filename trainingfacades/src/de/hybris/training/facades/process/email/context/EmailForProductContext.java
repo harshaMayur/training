@@ -1,14 +1,14 @@
 package de.hybris.training.facades.process.email.context;
 
 import de.hybris.platform.acceleratorservices.model.cms2.pages.EmailPageModel;
+import de.hybris.platform.acceleratorservices.process.email.context.AbstractEmailContext;
 import de.hybris.platform.basecommerce.model.site.BaseSiteModel;
 import de.hybris.platform.commercefacades.product.data.ProductData;
+import de.hybris.platform.commerceservices.model.process.EmailForProductProcessModel;
 import de.hybris.platform.converters.impl.AbstractPopulatingConverter;
 import de.hybris.platform.core.model.c2l.LanguageModel;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.core.model.user.CustomerModel;
-import de.hybris.training.core.model.process.EmailForProductProcessModel;
-import de.hybris.platform.acceleratorservices.process.email.context.AbstractEmailContext;
 
 public class EmailForProductContext extends AbstractEmailContext<EmailForProductProcessModel> {
     private AbstractPopulatingConverter<ProductModel, ProductData> productConverter;
