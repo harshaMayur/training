@@ -4,12 +4,14 @@ import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.processengine.BusinessProcessService;
 import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
 import de.hybris.platform.servicelayer.model.ModelService;
+import de.hybris.platform.site.BaseSiteService;
 
 
 public class SendEmailForProductEventListener extends AbstractEventListener<SendEmailForProductEvent> {
 
     private BusinessProcessService businessProcessService;
     private ModelService modelService;
+    private BaseSiteService baseSiteService;
     @Override
     protected void onEvent(SendEmailForProductEvent event) {
         final ProductModel currentProduct=event.getCurrentProduct();
@@ -19,6 +21,8 @@ public class SendEmailForProductEventListener extends AbstractEventListener<Send
         if (emailForProductProcessModel != null)
         {
             emailForProductProcessModel.setCurrentProduct(currentProduct);
+            emailForProductProcessModel.setSite(getBaseSiteService().getCurrentBaseSite());
+            emailForProductProcessModel.setStore(getBaseSiteService().getCurrentBaseSite().getStores().get(0));
             getModelService().save(emailForProductProcessModel);
             getBusinessProcessService().startProcess(emailForProductProcessModel);
         }
@@ -30,6 +34,14 @@ public class SendEmailForProductEventListener extends AbstractEventListener<Send
 
     public void setBusinessProcessService(BusinessProcessService businessProcessService) {
         this.businessProcessService = businessProcessService;
+    }
+
+    public BaseSiteService getBaseSiteService() {
+        return baseSiteService;
+    }
+
+    public void setBaseSiteService(BaseSiteService baseSiteService) {
+        this.baseSiteService = baseSiteService;
     }
 
     public ModelService getModelService() {

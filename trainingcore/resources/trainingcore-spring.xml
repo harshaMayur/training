@@ -446,6 +446,7 @@
 
 	<bean id="sendEmailForProductEventListener" class="de.hybris.training.core.custom.event.SendEmailForProductEventListener" parent="abstractEventListener">
 		<property name="businessProcessService" ref="businessProcessService"/>
+
 	</bean>
 
 	<bean id="quoteBuyerProcessDefinitionResource"
