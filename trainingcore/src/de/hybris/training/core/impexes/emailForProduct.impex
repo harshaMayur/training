@@ -1,0 +1,31 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$wideContent=CMSImageComponent,BannerComponent,SimpleBannerComponent,CMSLinkComponent,CMSParagraphComponent
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+$emailResource=$config-emailResourceValue
+$lang=en
+
+
+# Email velocity templates
+INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;description[lang=$lang];rendererType(code)[default='velocity'];templateScript[lang=$lang,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                              ;powertool_email_for_Product_Body;de.hybris.training.facades.process.email.context.EmailForProductContext;"EmailForProductBody";;$emailResource/email-emailForProductBody.vm;
+                              ;powertool_email_for_Product_Subject;de.hybris.training.facades.process.email.context.EmailForProductContext;"EmailForProductSubject";;$emailResource/email-emailForProductSubject.vm;
+
+# Email page Template
+INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+                               ;;EmailForProductTemplate;Email For Product Template;true;EmailForProductTemplate;powertool_email_for_Product_Subject;powertool_email_for_Product_Body;EmailPage
+
+# Email Pages
+INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved']
+                       ;;EmailForProduct;Email For Product;EmailForProductTemplate;true;
+
+UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];fromEmail[lang=$lang];fromName[lang=$lang]
+                ;;EmailForProduct;"customerservices@hybris.com";"Customer Services Team"
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='EmailForProductTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;SiteLogo;;$wideContent;email
+                             ;TopContent;;$wideContent;email
+                             ;BottomContent;;$wideContent;email

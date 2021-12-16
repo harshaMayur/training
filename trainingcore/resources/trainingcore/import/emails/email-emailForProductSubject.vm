@@ -1,0 +1,2 @@
+## messageSource=classpath:/trainingcore/messages/email-emailForProduct_$lang.properties
+${ctx.messages.emailSubject}

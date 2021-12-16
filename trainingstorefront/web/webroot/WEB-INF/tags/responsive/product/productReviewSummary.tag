@@ -12,6 +12,7 @@
 	type="de.hybris.platform.commercefacades.product.data.ProductData"%>
 
 <h1>Product review summary</h1>
+
 <div class="rating">
 	<c:set var="ratingJson">${ycommerce:encodeJSON(product.averageRating)}</c:set>
 	<div class="rating-stars pull-left js-ratingCalc ${fn:escapeXml(starsClass)}" data-rating='{"rating":"${fn:escapeXml(ratingJson)}","total":5}' >
@@ -32,6 +33,7 @@
 			arguments="${fn:length(product.reviews)}" />
 	</c:if>
 
+	<%--<a href="sendEmail/${product.code}"><spring:theme code="review.see.sendemail"/></a>--%>
 	<c:choose>
 		<c:when test="${showLinks}" >
 			<c:if test="${not empty product.reviews}">
@@ -43,5 +45,14 @@
 			<spring:theme code="review.reviews" />
 		</c:otherwise>
 	</c:choose>
-	
+	<c:url value="${product.url}/sendEmail" var="sendEmailUrl" />
+	<a href="${sendEmailUrl}" title="<spring:theme code="review.see.sendemail"/>">
+		<spring:theme code="review.see.sendemail"/>
+	</a>
+	<%--<c:url value="${product.code}/sendEmail" var="sendEmail"/>
+	<form action="${sendEmail}"  method="post">
+		<button type="submit">
+			<spring:theme code="review.see.sendemail" />
+		</button>
+	</form>--%>
 </div>

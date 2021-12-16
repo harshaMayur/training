@@ -1,0 +1,9 @@
+## messageSource=classpath:/trainingcore/messages/email-emailForProduct_$lang.properties
+${ctx.messages.emailBodyHeader}<br>
+${ctx.messages.productName}${ctx.currentProduct.name}
+<br>
+${ctx.messages.productPrice} ${ctx.currentProduct.priceData.value}
+<br>
+${ctx.messages.manufacturer} ${ctx.currentProduct.manufacturer}
+<br><br>
+${ctx.messages.emailBodyFooter}

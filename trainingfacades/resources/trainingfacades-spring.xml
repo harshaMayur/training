@@ -210,4 +210,21 @@
 		<property name="add" ref="productToManufacturerPopulator"/>
 	</bean>
 
+	<bean id="emailForProductContext" class="de.hybris.training.facades.process.email.context.EmailForProductContext"
+		  parent="abstractEmailContext" scope="prototype">
+		<property name="productConverter" ref="productConverter"/>
+	</bean>
+
+	<bean id="defaultProcessContextResolutionStrategyMap" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map merge="true">
+				<entry value-ref="storeFrontProcessContextStrategy">
+					<key>
+						<value type="java.lang.Class">de.hybris.training.core.model.process.EmailForProductProcessModel</value>
+					</key>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
 </beans>
