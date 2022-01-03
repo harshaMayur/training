@@ -560,4 +560,7 @@
 		<property name="cartCalculationStrategy" ref="commerceCartCalculationStrategy"/>
 	</bean>
 
+	<bean id="trainingManufacturerNameResolver" class="de.hybris.training.core.search.solrfacetsearch.provider.impl.TrainingManufacturerNameResolver"
+		  parent="abstractValueResolver"/>
+
 </beans>
