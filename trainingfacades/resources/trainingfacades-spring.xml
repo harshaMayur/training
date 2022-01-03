@@ -220,7 +220,7 @@
 			<map merge="true">
 				<entry value-ref="storeFrontProcessContextStrategy">
 					<key>
-						<value type="java.lang.Class">de.hybris.platform.commerceservices.model.process.EmailForProductProcessModel</value>
+						<value type="java.lang.Class">de.hybris.training.core.model.process.EmailForProductProcessModel</value>
 					</key>
 				</entry>
 			</map>
