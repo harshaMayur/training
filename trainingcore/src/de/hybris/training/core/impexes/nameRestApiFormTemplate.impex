@@ -1,0 +1,44 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCatalogName=powertools Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+                          ;;NameApiFormTemplate;Name Api Form Template;training/apiNameForm;ContentPage
+
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='NameApiFormTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;SiteLogo;;;logo
+                             ;HeaderLinks;;;headerlinks
+                             ;TopHeaderSlot;;;wide
+                             ;BottomHeaderSlot;;;wide
+                             ;SearchBox;;;searchbox
+                             ;MiniCart;;;minicart
+                             ;NavigationBar;;;navigation
+                             ;Footer;;;footer
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active
+                         ;;SiteLogoSlot;Default Site Logo Slot;true
+                         ;;HeaderLinksSlot;Header links;true
+                         ;;TopHeaderSlot;Top Header;true
+                         ;;BottomHeaderSlot;Bottom Header;true
+                         ;;SearchBoxSlot;Search Box;true
+                         ;;MiniCartSlot;Mini Cart;true
+                         ;;NavigationBarSlot;Navigation Bar;true
+                         ;;FooterSlot;Footer;true
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='NameApiFormTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;SiteLogo-nameFormPage;SiteLogo;;SiteLogoSlot;true
+                                    ;;HeaderLinks-nameFormPage;HeaderLinks;;HeaderLinksSlot;true
+                                    ;;TopHeader-nameFormPage;TopHeaderSlot;;TopHeaderSlot;true
+                                    ;;BottomHeader-nameFormPage;BottomHeaderSlot;;BottomHeaderSlot;true
+                                    ;;SearchBox-nameFormPage;SearchBox;;SearchBoxSlot;true
+                                    ;;MiniCart-nameFormPage;MiniCart;;MiniCartSlot;true
+                                    ;;NavigationBar-nameFormPage;NavigationBar;;NavigationBarSlot;true
+                                    ;;Footer-nameFormPage;Footer;;FooterSlot;true
+
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='false'];approvalStatus(code)[default='approved'];homepage[default='false']
+                         ;;apiNameForm;api Name Form page;NameApiFormTemplate;/nameFormPage

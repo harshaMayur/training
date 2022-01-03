@@ -1,0 +1,44 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCatalogName=powertools Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+                          ;;NameApiDetailsTemplate;Name Api Details Template;training/nameApiDetails;ContentPage
+
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='NameApiDetailsTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;SiteLogo;;;logo
+                             ;HeaderLinks;;;headerlinks
+                             ;TopHeaderSlot;;;wide
+                             ;BottomHeaderSlot;;;wide
+                             ;SearchBox;;;searchbox
+                             ;MiniCart;;;minicart
+                             ;NavigationBar;;;navigation
+                             ;Footer;;;footer
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active
+                         ;;SiteLogoSlot;Default Site Logo Slot;true
+                         ;;HeaderLinksSlot;Header links;true
+                         ;;TopHeaderSlot;Top Header;true
+                         ;;BottomHeaderSlot;Bottom Header;true
+                         ;;SearchBoxSlot;Search Box;true
+                         ;;MiniCartSlot;Mini Cart;true
+                         ;;NavigationBarSlot;Navigation Bar;true
+                         ;;FooterSlot;Footer;true
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='NameApiDetailsTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;SiteLogo-nameApiDetails;SiteLogo;;SiteLogoSlot;true
+                                    ;;HeaderLinks-nameApiDetails;HeaderLinks;;HeaderLinksSlot;true
+                                    ;;TopHeader-nameApiDetails;TopHeaderSlot;;TopHeaderSlot;true
+                                    ;;BottomHeader-nameApiDetails;BottomHeaderSlot;;BottomHeaderSlot;true
+                                    ;;SearchBox-nameApiDetails;SearchBox;;SearchBoxSlot;true
+                                    ;;MiniCart-nameApiDetails;MiniCart;;MiniCartSlot;true
+                                    ;;NavigationBar-nameApiDetails;NavigationBar;;NavigationBarSlot;true
+                                    ;;Footer-nameApiDetails;Footer;;FooterSlot;true
+
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='false'];approvalStatus(code)[default='approved'];homepage[default='false']
+                         ;;nameApiDetails;name Api Details;NameApiDetailsTemplate;/nameApiDetailsPage
