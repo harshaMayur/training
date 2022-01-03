@@ -1,13 +1,14 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 22, 2021, 11:33:55 PM                   ---
+ * --- Generated at Jan 3, 2022, 11:48:35 AM                    ---
  * ----------------------------------------------------------------
  *  
- * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.training.core.jalo;
 
+import de.hybris.platform.commerceservices.jalo.process.EmailForProductProcess;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
@@ -168,6 +169,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final Map attributeValues)
 	{
 		return createElectronicsColorVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public EmailForProductProcess createEmailForProductProcess(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.EMAILFORPRODUCTPROCESS );
+			return (EmailForProductProcess)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating EmailForProductProcess : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public EmailForProductProcess createEmailForProductProcess(final Map attributeValues)
+	{
+		return createEmailForProductProcess( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ManufacturerInfo createManufacturerInfo(final SessionContext ctx, final Map attributeValues)

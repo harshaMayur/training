@@ -14,7 +14,6 @@ public class DefaultTrainingCartService extends DefaultCartService implements Tr
 
     private DefaultCommerceCartCalculationStrategy cartCalculationStrategy;
 
-
     @Override
     public CartModel addEntryToCart(int entryNumber, Model model) {
         CartEntryModel duplicateEntry;
