@@ -1,8 +1,8 @@
 package de.hybris.training.core.services.impl;
 
-import com.training.core.model.ManufacturerInfoModel;
 import de.hybris.platform.commercefacades.product.data.ManufacturerInfoData;
 import de.hybris.platform.servicelayer.model.ModelService;
+import de.hybris.training.core.model.ManufacturerInfoModel;
 import de.hybris.training.core.services.ManufacturerService;
 
 import javax.annotation.Resource;

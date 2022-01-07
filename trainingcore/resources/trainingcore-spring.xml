@@ -563,4 +563,6 @@
 	<bean id="trainingManufacturerNameResolver" class="de.hybris.training.core.search.solrfacetsearch.provider.impl.TrainingManufacturerNameResolver"
 		  parent="abstractValueResolver"/>
 
+	<bean name="manufacturerService" class="de.hybris.training.core.services.impl.DefaultManufacturerService"/>
+
 </beans>
