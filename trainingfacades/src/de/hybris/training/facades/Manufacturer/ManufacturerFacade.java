@@ -6,13 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface ManufacturerFacade {
     /**
-     * gets manufacturer details from HttpRequest to to data
-     * @param request
-     * @return ManufacturerInfoData
-     */
-    public ManufacturerInfoData getManufacturerDetails(HttpServletRequest request);
-
-    /**
      * saves manufacturer details to DB
      * @param manufacturerInfoData
      * @return

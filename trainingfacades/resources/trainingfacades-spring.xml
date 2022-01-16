@@ -229,5 +229,5 @@
 
 	<bean name="manufacturerFacade" class="de.hybris.training.facades.Manufacturer.DefaultManufacturerFacade"/>
 
-	<bean name="manufacturerDetailsPopulator" class="de.hybris.training.facades.populators.ManufacturerDetailsPopulator"/>
+	<bean name="reverseManufacturerPopulator" class="de.hybris.training.facades.populators.ReverseManufacturerPopulator"/>
 </beans>
