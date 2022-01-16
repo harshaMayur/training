@@ -8,6 +8,7 @@
     <title>NameAPI</title>
 </head>
 <body>
+${"error"}
 <template:page pageTitle="${pageTitle}">
 
     <table border="1" cellpadding="5">

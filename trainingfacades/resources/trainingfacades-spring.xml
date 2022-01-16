@@ -220,11 +220,14 @@
 			<map merge="true">
 				<entry value-ref="storeFrontProcessContextStrategy">
 					<key>
-						<value type="java.lang.Class">de.hybris.training.core.model.process.EmailForProductProcessModel</value>
+						<value type="java.lang.Class">de.hybris.platform.commerceservices.model.process.EmailForProductProcessModel</value>
 					</key>
 				</entry>
 			</map>
 		</property>
 	</bean>
 
+	<bean name="manufacturerFacade" class="de.hybris.training.facades.Manufacturer.DefaultManufacturerFacade"/>
+
+	<bean name="manufacturerDetailsPopulator" class="de.hybris.training.facades.populators.ManufacturerDetailsPopulator"/>
 </beans>

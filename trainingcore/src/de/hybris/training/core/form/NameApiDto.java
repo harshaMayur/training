@@ -1,6 +1,6 @@
 package de.hybris.training.core.form;
 
-public class NameApiForm {
+public class NameApiDto {
     private String name;
     private int age;
     private int count;

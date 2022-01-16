@@ -207,6 +207,8 @@
         
         
         <requires-extension name="ysapproductconfigaddon"/>
+
+        <requires-extension name="trainingOcc"/>
                 
         <requires-extension name="xyformsstorefrontcommons"/>
                         
