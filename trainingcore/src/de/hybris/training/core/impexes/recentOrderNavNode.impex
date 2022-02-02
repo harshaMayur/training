@@ -1,0 +1,23 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]      ; $contentCV[unique = true]; name                      ; parent(uid, $contentCV); links(&linkRef); &nodeRef
+                               ; RecentOrdersNavNode ;                          ; Recent Orders Nav Node ;                        ;                ; RecentOrdersNavNode
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]         ; $contentCV[unique = true]; name       ; parent(uid, $contentCV); &nodeRef                   ; children(uid, $contentCV)
+                               ; PowertoolsCategoryNavNode ;                          ; Categories ; PowertoolsNavNode     ; PowertoolsCategoryNavNode ;PowerDrillsNavNode,AngleGrindersNavNode,ScrewdriversNavNode,SandersNavNode,MeasuringLayoutToolsNavNode,HandToolsNavNode,SafetyNavNode,ActivityApiNavNode,RecentOrdersNavNode
+
+INSERT_UPDATE CMSNavigationEntry; uid[unique = true]           ; $contentCV[unique = true]; name                           ; navigationNode(&nodeRef); item(CMSLinkComponent.uid, CMSLinkComponent.$contentCV);
+                                ; RecentOrdersNavNodeEntry ;                          ;RecentOrders Nav NodeEntry ; RecentOrdersNavNode ; RecentOrdersNavLink                             ;
+
+
+
+
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]         ; name                          ; url                      ; &linkRef                ; &componentRef           ; target(code)[default = 'sameWindow'];
+                              ;                          ; RecentOrdersNavLink ; Recent Orders Nav Link ; /recentOrders ;  ;  ;                                     ;          ;         ;
+
+UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]      ; title[lang = en]
+                        ;                          ; RecentOrdersNavNode ; "recentOrders"
+
+UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]         ; linkName[lang = en]
+                       ;                          ; RecentOrdersNavLink ; "recent Orders"

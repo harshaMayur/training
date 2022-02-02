@@ -144,7 +144,7 @@
 			<map merge="true">
 				<entry key="previous" value-ref="REDIRECT_TO_DELIVERY_ADDRESS"/>
 				<entry key="current" value-ref="REDIRECT_TO_DELIVERY_METHOD"/>
-				<entry key="next" value-ref="REDIRECT_TO_PAYMENT_METHOD"/>
+				<entry key="next" value-ref="REDIRECT_TO_SUMMARY"/>
 			</map>
 		</property>
 		<property name="progressBarId" value="deliveryMethod"/>
@@ -170,7 +170,7 @@
 		<property name="checkoutStepValidator" ref="defaultResponsiveSummaryCheckoutValidator"/>
 		<property name="transitions">
 			<map merge="true">
-				<entry key="previous" value-ref="REDIRECT_TO_PAYMENT_METHOD"/>
+				<entry key="previous" value-ref="REDIRECT_TO_DELIVERY_METHOD"/>
 				<entry key="current" value-ref="REDIRECT_TO_SUMMARY"/>
 				<entry key="next" value="redirect:/checkout/orderConfirmation/%s"/>
 			</map>
@@ -191,7 +191,7 @@
 				<entry key="delivery-address" value-ref="deliveryAddressCheckoutStep"/>
 				<entry key="delivery-method" value-ref="deliveryMethodCheckoutStep"/>
 				<entry key="pickup-location" value-ref="pickupLocationCheckoutStep"/>
-				<entry key="payment-method" value-ref="paymentMethodCheckoutStep"/>
+				<!--<entry key="payment-method" value-ref="paymentMethodCheckoutStep"/>-->
 				<entry key="summary" value-ref="summaryCheckoutStep"/>
 			</map>
 		</property>

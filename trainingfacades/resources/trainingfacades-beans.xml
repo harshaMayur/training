@@ -23,5 +23,11 @@
 	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
 		<property name="manufacturerInfo" type="java.util.Collection&lt;de.hybris.platform.commercefacades.product.data.ManufacturerInfoData>"/>
 	</bean>
-	
+
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.manufacturer.ManufacturerDetailsWsDto">
+		<property name="id" type="java.lang.String"/>
+		<property name="name" type="java.lang.String"/>
+		<property name="establishmentYear" type="java.lang.String"/>
+	</bean>
+
 </beans>

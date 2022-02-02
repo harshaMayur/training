@@ -1,10 +1,10 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 22, 2021, 11:33:55 PM                   ---
+ * --- Generated at Jan 31, 2022, 3:06:26 PM                    ---
  * ----------------------------------------------------------------
  *  
- * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.training.core.constants;
 
@@ -22,7 +22,9 @@ public class GeneratedTrainingCoreConstants
 		public static final String APPARELSIZEVARIANTPRODUCT = "ApparelSizeVariantProduct".intern();
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
+		public static final String EMAILFORPRODUCTPROCESS = "EmailForProductProcess".intern();
 		public static final String MANUFACTURERINFO = "ManufacturerInfo".intern();
+		public static final String RECENTORDERCAROUSELCOMPONENT = "RecentOrderCarouselComponent".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}
 	public static class Attributes

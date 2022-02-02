@@ -1,10 +1,10 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 22, 2021, 11:33:55 PM                   ---
+ * --- Generated at Jan 31, 2022, 3:06:26 PM                    ---
  * ----------------------------------------------------------------
  *  
- * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.training.core.jalo;
 

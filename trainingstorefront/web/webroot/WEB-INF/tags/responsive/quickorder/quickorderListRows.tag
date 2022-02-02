@@ -51,7 +51,6 @@
 			{{else}}
 				<theme:image code="img.missingProductImage.responsive.thumbnail"/>
 			{{/if}}
-
 		</a>
 	</div>
 	<div class="item__info js-product-info">

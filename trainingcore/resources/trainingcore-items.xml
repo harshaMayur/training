@@ -146,5 +146,20 @@
             </attributes>
         </itemtype>
         </typegroup>
+
+        <typegroup name="CustomComponent">
+            <itemtype code="RecentOrderCarouselComponent" autocreate="true" generate="true" extends="SimpleCMSComponent"
+                      jaloclass="de.hybris.platform.cms2lib.components.RecentOrderCarouselComponent">
+                <attributes>
+                    <attribute type="java.lang.Integer" qualifier="limit">
+                        <persistence type="property" />
+                        <modifiers optional="false" />
+                        <defaultvalue>
+                            em().getEnumerationValue("Integer","5")
+                        </defaultvalue>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>
