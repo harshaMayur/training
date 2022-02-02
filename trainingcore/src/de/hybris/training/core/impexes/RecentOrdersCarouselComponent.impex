@@ -1,0 +1,16 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCatalogName=powertools Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE RecentOrderCarouselComponent; $contentCV; uid[unique = true]                 ; name                              ; limit                     ; &componentRef
+                                     ;           ; RecentOrderCarouselComponentTest ; Recent Order Carousel Component ; 5 ; RecentOrderCarouselComponentTest
+
+INSERT_UPDATE ContentSlotName; name[unique = true]       ; template(uid, $contentCV)[unique = true][default = 'OrderConfirmationPageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; recentOrderCarouselSlotName ;                                                                                  ; RecentOrderCarouselComponent
+
+INSERT_UPDATE ContentSlot; $contentCV; uid[unique = true]            ; name                         ; active; cmsComponents(&componentRef)
+                         ;           ; recentOrderCarouselSlot ; recent Order Carousel Slot ; true  ; RecentOrderCarouselComponentTest
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OrderConfirmationPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;recentOrder-OrderConfirmationPage;recentOrder;;recentOrderCarouselSlot;true

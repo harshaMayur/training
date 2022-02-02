@@ -14,6 +14,11 @@
             <cms:component component="${feature}" element="div" class="checkout__confirmation__content--component"/>
         </cms:pageSlot>
     </div>
+    <div>
+        <cms:pageSlot position="recentOrder" var="feature" element="div" class="account-section-content checkout__confirmation__content">
+            <cms:component component="${feature}" element="div" class="checkout__confirmation__content--component"/>
+        </cms:pageSlot>
+    </div>
     <cms:pageSlot position="BottomContent" var="feature" element="div" class="accountPageBottomContent">
         <cms:component component="${feature}" element="div" class="accountPageBottomContent-component"/>
     </cms:pageSlot>
