@@ -230,4 +230,7 @@
 	<bean name="manufacturerFacade" class="de.hybris.training.facades.Manufacturer.DefaultManufacturerFacade"/>
 
 	<bean name="reverseManufacturerPopulator" class="de.hybris.training.facades.populators.ReverseManufacturerPopulator"/>
+
+	<bean name="trainingCsvFacade" class="de.hybris.training.facades.training.DefaultTrainingCsvFacade"/>
+
 </beans>

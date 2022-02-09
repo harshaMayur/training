@@ -1,6 +1,3 @@
-<%@ page trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
@@ -12,11 +9,9 @@
         <ycommerce:testId code="orderDetails_backToOrderHistory_button">
             <div class="orderBackBtn">
                 <button type="button" class="btn btn-default btn-block" data-back-to-orders="${fn:escapeXml(orderHistoryUrl)}">
-                    <spring:theme code="text.account.orderDetails.backToOrderHistory"/>
+                    <spring:theme code="text.account.orderDetails.exportToCsv"/>
                 </button>
             </div>
         </ycommerce:testId>
     </div>
 </div>
-
-

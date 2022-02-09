@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
-import org.training.restServices.TrainingRestService;
-
 
 import javax.annotation.Resource;
 import java.net.http.HttpTimeoutException;
@@ -24,7 +22,7 @@ import java.net.http.HttpTimeoutException;
 @Controller
 public class TrainingRestApiController extends AbstractPageController {
 
-    @Resource(name="trainingRestService")
+ /*   @Resource(name="trainingRestService")
     private TrainingRestService trainingRestService;
 
     private static final String activityPage="activityDetailsPage";
@@ -46,16 +44,16 @@ public class TrainingRestApiController extends AbstractPageController {
         storeCmsPageInModel(model, activityDetailsCMSPage);
         setUpMetaDataForContentPage(model, activityDetailsCMSPage);
         return getViewForPage(model);
-        /*return ControllerConstants.Views.Pages.Training.TrainingActivityDetailPage;*/
+        *//*return ControllerConstants.Views.Pages.Training.TrainingActivityDetailPage;*//*
     }
 
-    /**
+    *//**
      * Displays Name form
      * @param nameApidto
      * @param model
      * @return
      * @throws CMSItemNotFoundException
-     */
+     *//*
     @RequestMapping(value = "/nameForm")
     public String nameApi(@ModelAttribute("nameApiForm") final NameApiDto nameApidto, Model model) throws CMSItemNotFoundException {
         final ContentPageModel nameFormCMSPage = getContentPageForLabelOrId(nameApiFormPage);
@@ -64,13 +62,13 @@ public class TrainingRestApiController extends AbstractPageController {
         return getViewForPage(model);
     }
 
-    /**
+    *//**
      * Displays details fetched from occ
      * @param nameApiForm
      * @param model
      * @return
      * @throws CMSItemNotFoundException
-     */
+     *//*
     @RequestMapping(value = "/nameForm/getDetails")
     @ResponseStatus(HttpStatus.OK)
     public String ShowNameApiDetails(@ModelAttribute("nameApiForm") final NameApiDto nameApiForm, final Model model) throws CMSItemNotFoundException {
@@ -89,5 +87,5 @@ public class TrainingRestApiController extends AbstractPageController {
         setUpMetaDataForContentPage(model, activityDetailsCMSPage);
         return getViewForPage(model);
     }
-
+*/
 }
